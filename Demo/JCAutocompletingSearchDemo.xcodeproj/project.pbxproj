@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C4FDFD56160A5FF50086589E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFD55160A5FF50086589E /* UIKit.framework */; };
+		C4FDFD58160A5FF50086589E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFD57160A5FF50086589E /* Foundation.framework */; };
+		C4FDFD5A160A5FF50086589E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4FDFD59160A5FF50086589E /* CoreGraphics.framework */; };
+		C4FDFD60160A5FF50086589E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C4FDFD5E160A5FF50086589E /* InfoPlist.strings */; };
+		C4FDFD62160A5FF50086589E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FDFD61160A5FF50086589E /* main.m */; };
+		C4FDFD66160A5FF50086589E /* JCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FDFD65160A5FF50086589E /* JCAppDelegate.m */; };
+		C4FDFD76160A60560086589E /* JCAutocompletingSearchGenericResultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FDFD71160A60560086589E /* JCAutocompletingSearchGenericResultCell.m */; };
+		C4FDFD77160A60560086589E /* JCAutocompletingSearchStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FDFD72160A60560086589E /* JCAutocompletingSearchStoryboard.storyboard */; };
+		C4FDFD78160A60560086589E /* JCAutocompletingSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4FDFD74160A60560086589E /* JCAutocompletingSearchViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		C4FDFD51160A5FF50086589E /* JCAutocompletingSearchDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JCAutocompletingSearchDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C4FDFD55160A5FF50086589E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		C4FDFD57160A5FF50086589E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		C4FDFD59160A5FF50086589E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C4FDFD5D160A5FF50086589E /* JCAutocompletingSearchDemo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "JCAutocompletingSearchDemo-Info.plist"; sourceTree = "<group>"; };
+		C4FDFD5F160A5FF50086589E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		C4FDFD61160A5FF50086589E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C4FDFD63160A5FF50086589E /* JCAutocompletingSearchDemo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JCAutocompletingSearchDemo-Prefix.pch"; sourceTree = "<group>"; };
+		C4FDFD64160A5FF50086589E /* JCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JCAppDelegate.h; sourceTree = "<group>"; };
+		C4FDFD65160A5FF50086589E /* JCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JCAppDelegate.m; sourceTree = "<group>"; };
+		C4FDFD70160A60560086589E /* JCAutocompletingSearchGenericResultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCAutocompletingSearchGenericResultCell.h; path = ../Library/JCAutocompletingSearchGenericResultCell.h; sourceTree = "<group>"; };
+		C4FDFD71160A60560086589E /* JCAutocompletingSearchGenericResultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCAutocompletingSearchGenericResultCell.m; path = ../Library/JCAutocompletingSearchGenericResultCell.m; sourceTree = "<group>"; };
+		C4FDFD72160A60560086589E /* JCAutocompletingSearchStoryboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = JCAutocompletingSearchStoryboard.storyboard; path = ../Library/JCAutocompletingSearchStoryboard.storyboard; sourceTree = "<group>"; };
+		C4FDFD73160A60560086589E /* JCAutocompletingSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCAutocompletingSearchViewController.h; path = ../Library/JCAutocompletingSearchViewController.h; sourceTree = "<group>"; };
+		C4FDFD74160A60560086589E /* JCAutocompletingSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = JCAutocompletingSearchViewController.m; path = ../Library/JCAutocompletingSearchViewController.m; sourceTree = "<group>"; };
+		C4FDFD75160A60560086589E /* JCAutocompletingSearchViewControllerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = JCAutocompletingSearchViewControllerDelegate.h; path = ../Library/JCAutocompletingSearchViewControllerDelegate.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C4FDFD4E160A5FF50086589E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4FDFD56160A5FF50086589E /* UIKit.framework in Frameworks */,
+				C4FDFD58160A5FF50086589E /* Foundation.framework in Frameworks */,
+				C4FDFD5A160A5FF50086589E /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C4FDFD46160A5FF50086589E = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD7A160A605B0086589E /* Library */,
+				C4FDFD5B160A5FF50086589E /* JCAutocompletingSearchDemo */,
+				C4FDFD54160A5FF50086589E /* Frameworks */,
+				C4FDFD52160A5FF50086589E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C4FDFD52160A5FF50086589E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD51160A5FF50086589E /* JCAutocompletingSearchDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C4FDFD54160A5FF50086589E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD55160A5FF50086589E /* UIKit.framework */,
+				C4FDFD57160A5FF50086589E /* Foundation.framework */,
+				C4FDFD59160A5FF50086589E /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		C4FDFD5B160A5FF50086589E /* JCAutocompletingSearchDemo */ = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD64160A5FF50086589E /* JCAppDelegate.h */,
+				C4FDFD65160A5FF50086589E /* JCAppDelegate.m */,
+				C4FDFD5C160A5FF50086589E /* Supporting Files */,
+			);
+			path = JCAutocompletingSearchDemo;
+			sourceTree = "<group>";
+		};
+		C4FDFD5C160A5FF50086589E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD5D160A5FF50086589E /* JCAutocompletingSearchDemo-Info.plist */,
+				C4FDFD5E160A5FF50086589E /* InfoPlist.strings */,
+				C4FDFD61160A5FF50086589E /* main.m */,
+				C4FDFD63160A5FF50086589E /* JCAutocompletingSearchDemo-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C4FDFD7A160A605B0086589E /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				C4FDFD70160A60560086589E /* JCAutocompletingSearchGenericResultCell.h */,
+				C4FDFD71160A60560086589E /* JCAutocompletingSearchGenericResultCell.m */,
+				C4FDFD72160A60560086589E /* JCAutocompletingSearchStoryboard.storyboard */,
+				C4FDFD73160A60560086589E /* JCAutocompletingSearchViewController.h */,
+				C4FDFD74160A60560086589E /* JCAutocompletingSearchViewController.m */,
+				C4FDFD75160A60560086589E /* JCAutocompletingSearchViewControllerDelegate.h */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C4FDFD50160A5FF50086589E /* JCAutocompletingSearchDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C4FDFD69160A5FF50086589E /* Build configuration list for PBXNativeTarget "JCAutocompletingSearchDemo" */;
+			buildPhases = (
+				C4FDFD4D160A5FF50086589E /* Sources */,
+				C4FDFD4E160A5FF50086589E /* Frameworks */,
+				C4FDFD4F160A5FF50086589E /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = JCAutocompletingSearchDemo;
+			productName = JCAutocompletingSearchDemo;
+			productReference = C4FDFD51160A5FF50086589E /* JCAutocompletingSearchDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C4FDFD48160A5FF50086589E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = JC;
+				LastUpgradeCheck = 0440;
+				ORGANIZATIONNAME = "James Coleman";
+			};
+			buildConfigurationList = C4FDFD4B160A5FF50086589E /* Build configuration list for PBXProject "JCAutocompletingSearchDemo" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C4FDFD46160A5FF50086589E;
+			productRefGroup = C4FDFD52160A5FF50086589E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4FDFD50160A5FF50086589E /* JCAutocompletingSearchDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C4FDFD4F160A5FF50086589E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4FDFD60160A5FF50086589E /* InfoPlist.strings in Resources */,
+				C4FDFD77160A60560086589E /* JCAutocompletingSearchStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C4FDFD4D160A5FF50086589E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C4FDFD62160A5FF50086589E /* main.m in Sources */,
+				C4FDFD66160A5FF50086589E /* JCAppDelegate.m in Sources */,
+				C4FDFD76160A60560086589E /* JCAutocompletingSearchGenericResultCell.m in Sources */,
+				C4FDFD78160A60560086589E /* JCAutocompletingSearchViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		C4FDFD5E160A5FF50086589E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4FDFD5F160A5FF50086589E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C4FDFD67160A5FF50086589E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C4FDFD68160A5FF50086589E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C4FDFD6A160A5FF50086589E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JCAutocompletingSearchDemo/JCAutocompletingSearchDemo-Prefix.pch";
+				INFOPLIST_FILE = "JCAutocompletingSearchDemo/JCAutocompletingSearchDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		C4FDFD6B160A5FF50086589E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "JCAutocompletingSearchDemo/JCAutocompletingSearchDemo-Prefix.pch";
+				INFOPLIST_FILE = "JCAutocompletingSearchDemo/JCAutocompletingSearchDemo-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4FDFD4B160A5FF50086589E /* Build configuration list for PBXProject "JCAutocompletingSearchDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4FDFD67160A5FF50086589E /* Debug */,
+				C4FDFD68160A5FF50086589E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4FDFD69160A5FF50086589E /* Build configuration list for PBXNativeTarget "JCAutocompletingSearchDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4FDFD6A160A5FF50086589E /* Debug */,
+				C4FDFD6B160A5FF50086589E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4FDFD48160A5FF50086589E /* Project object */;
+}
