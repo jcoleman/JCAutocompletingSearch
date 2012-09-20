@@ -142,9 +142,13 @@
   ++loadingQueueCount;
   ++searchCounter;
   NSUInteger searchID = searchCounter;
+  __block BOOL searchResultsReturned = NO;
   [self setLoading:YES];
 
   [self.delegate searchController:self performSearchForQuery:searchText withResultsHandler:^(NSArray* searchResults) {
+    NSAssert(!searchResultsReturned, @"JCAutocompletingSearchController: delegate called results handler more than once for the same search execution.");
+    searchResultsReturned = YES;
+    
     if (searchID >= currentlyDisplaySearchID) {
       currentlyDisplaySearchID = searchID;
       if (searchResults) {
