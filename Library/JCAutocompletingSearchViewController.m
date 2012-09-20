@@ -152,7 +152,7 @@
         [self.resultsTableView reloadData];
       }
     } else {
-      NSLog(@"Got out-of-order search results; ignoring. (currently displayed: %i, searchID: %i", currentlyDisplaySearchID, searchID);
+      NSLog(@"JCAutocompletingSearchController: received out-of-order search results; ignoring. (currently displayed: %i, searchID: %i", currentlyDisplaySearchID, searchID);
     }
     --loadingQueueCount;
     if (loadingQueueCount == 0) {
