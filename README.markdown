@@ -8,7 +8,18 @@ What?
 
 JCAutocompletingSearch allows you to present a search controller that executes queries via its delegate. One likely source of the results would a web backend. Given the asynchronous (and delayed) nature of these types of searches, JCAutocompletingSearch automatically shows a loading indicator when necessary as well as managing out-of-order responses which shouldn't be displayed.
 
-The delegate is required to implement searching, a cancel button action, and result selected action. It can optionally implement methods controlling whether or not to perform a blank search on load, whether or not searches are performed synchronously (synchronous searches won't display the loading indicator cell), and giving the ability to present results in custom UITableView cells.
+The delegate is required to implement:
+
+* Searching
+* Cancel button action
+* Result selected action
+
+The delegate can optionally implement methods that:
+
+* Control whether or not to perform a blank search on load
+* Control whether or not searches are performed synchronously (synchronous searches won't display the loading indicator cell)
+* Control whether or not the search view controller should auto rotate to a new device orientation
+* Give the ability to present results in custom UITableView cells
 
 ![Sample application screenshot](https://github.com/jcoleman/JCAutocompletingSearch/raw/master/screenshot.png "Screenshot of sample application on iPhone")
 
