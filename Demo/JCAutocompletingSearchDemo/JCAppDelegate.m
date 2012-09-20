@@ -88,7 +88,13 @@
   [alert show];
 }
 
+// Optional.
 - (BOOL) searchControllerShouldPerformBlankSearchOnLoad:(JCAutocompletingSearchViewController*)searchController {
+  return YES;
+}
+
+// Optional.
+- (BOOL) searchController:(JCAutocompletingSearchViewController*)searchController shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
   return YES;
 }
 

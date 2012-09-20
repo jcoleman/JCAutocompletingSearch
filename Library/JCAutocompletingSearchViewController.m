@@ -54,6 +54,9 @@
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+  if (self.delegate && [self.delegate respondsToSelector:@selector(searchController:shouldAutorotateToInterfaceOrientation:)]) {
+    return [self.delegate searchController:self shouldAutorotateToInterfaceOrientation:interfaceOrientation];
+  }
   return YES;
 }
 

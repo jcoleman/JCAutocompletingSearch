@@ -54,6 +54,11 @@ Usage?
       return YES;
     }
     
+    // Optional.
+    - (BOOL) searchController:(JCAutocompletingSearchViewController*)searchController shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
+      return YES;
+    }
+    
     @end
     
     // ------------------------------------------------------------------------
