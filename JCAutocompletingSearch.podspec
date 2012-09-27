@@ -8,5 +8,6 @@ Pod::Spec.new do |s|
   s.author       = { 'James Coleman' => 'jtc331@gmail.com' }
   s.requires_arc = true
   s.source       = { :git => 'https://github.com/jcoleman/JCAutocompletingSearch.git', :tag => '0.9.1' }
-  s.source_files = 'Library/*'
+  s.source_files = 'Library/*.{h,m}'
+  s.resources    = 'Library/JCAutocompletingSearchStoryboard.storyboard'
 end
