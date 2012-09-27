@@ -6,9 +6,6 @@
 @property (nonatomic) BOOL loading;
 @property (strong, nonatomic) NSArray* results;
 
-@property (weak, nonatomic) IBOutlet UITableView *resultsTableView;
-@property (weak, nonatomic) IBOutlet UISearchBar *searchBar;
-
 @end
 
 @implementation JCAutocompletingSearchViewController {
