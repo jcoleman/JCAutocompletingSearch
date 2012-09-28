@@ -133,6 +133,18 @@
   }
 }
 
+- (void) resetSelection {
+  NSIndexPath* selectedRow = [self.resultsTableView indexPathForSelectedRow];
+  if (selectedRow) {
+    [self.resultsTableView deselectRowAtIndexPath:selectedRow animated:NO];
+  }
+}
+
+- (void) setSearchBarTextAndPerformSearch:(NSString*)query {
+  self.searchBar.text = query;
+  [self searchBar:self.searchBar textDidChange:query];
+}
+
 #pragma mark - UISearchBarDelegate Implementation
 
 - (void) searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)searchText {

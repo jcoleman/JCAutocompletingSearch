@@ -9,4 +9,7 @@
 
 + (JCAutocompletingSearchViewController*) autocompletingSearchViewController;
 
+- (void) resetSelection;
+- (void) setSearchBarTextAndPerformSearch:(NSString*)query;
+
 @end
