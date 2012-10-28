@@ -18,6 +18,7 @@ The delegate can optionally implement methods that:
 
 * Control whether or not to perform a blank search on load
 * Control whether or not searches are performed synchronously (synchronous searches won't display the loading indicator cell)
+* Control whether or not searches are delayed/batched--that is, the search controller can wait to perform searches until the search field hasn't changed for a configurable delay.
 * Control whether or not the search view controller should auto rotate to a new device orientation
 * Give the ability to present results in custom UITableView cells
 
@@ -68,6 +69,11 @@ Usage?
     // Optional.
     - (BOOL) searchController:(JCAutocompletingSearchViewController*)searchController shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
       return YES;
+    }
+    
+    // Optional.
+    - (dispatch_time_t) searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:(JCAutocompletingSearchViewController*)searchController {
+      return 0.2 * NSEC_PER_SEC;
     }
     
     @end

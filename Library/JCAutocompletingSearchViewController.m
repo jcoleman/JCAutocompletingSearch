@@ -15,6 +15,7 @@
   NSUInteger currentlyDisplaySearchID;
   BOOL delegateManagesTableViewCells;
   BOOL searchesPerformedSynchronously;
+  dispatch_time_t delaySearchUntilQueryUnchangedForTimeOffset;
 }
 
 + (JCAutocompletingSearchViewController*) autocompletingSearchViewController {
@@ -39,7 +40,7 @@
   if ( self.delegate
        && [self.delegate respondsToSelector:@selector(searchControllerShouldPerformBlankSearchOnLoad:)]
        && [self.delegate searchControllerShouldPerformBlankSearchOnLoad:self]) {
-    [self searchBar:self.searchBar textDidChange:@""];
+    [self executeSearchForQuery:@"" delayedBatching:NO];
   }
 }
 
@@ -59,16 +60,21 @@
 
 - (void) setDelegate:(NSObject<JCAutocompletingSearchViewControllerDelegate>*)delegate {
   _delegate = delegate;
-  if (delegate && [delegate respondsToSelector:@selector(searchControllerUsesCustomResultTableViewCells:)]) {
-    delegateManagesTableViewCells = [delegate searchControllerUsesCustomResultTableViewCells:self];
+
+  if (delegate) {
+    if ([delegate respondsToSelector:@selector(searchControllerUsesCustomResultTableViewCells:)]) {
+      delegateManagesTableViewCells = [delegate searchControllerUsesCustomResultTableViewCells:self];
+    }
+    if ([delegate respondsToSelector:@selector(searchControllerSearchesPerformedSynchronously:)]) {
+      searchesPerformedSynchronously = [delegate searchControllerSearchesPerformedSynchronously:self];
+    }
+    if ([delegate respondsToSelector:@selector(searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:)]) {
+      delaySearchUntilQueryUnchangedForTimeOffset = [delegate searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:self];
+    }
   } else {
     delegateManagesTableViewCells = NO;
-  }
-
-  if (delegate && [delegate respondsToSelector:@selector(searchControllerSearchesPerformedSynchronously:)]) {
-    searchesPerformedSynchronously = [delegate searchControllerSearchesPerformedSynchronously:self];
-  } else {
     searchesPerformedSynchronously = NO;
+    delaySearchUntilQueryUnchangedForTimeOffset = 0;
   }
 }
 
@@ -148,16 +154,38 @@
 #pragma mark - UISearchBarDelegate Implementation
 
 - (void) searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)searchText {
+  [self executeSearchForQuery:searchText delayedBatching:(delaySearchUntilQueryUnchangedForTimeOffset != 0)];
+}
+
+- (void) executeSearchForQuery:(NSString*)query delayedBatching:(BOOL)delayedBatching {
   ++loadingQueueCount;
   ++searchCounter;
+
   NSUInteger searchID = searchCounter;
+  if (delayedBatching) {
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, delaySearchUntilQueryUnchangedForTimeOffset);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+      if (searchID == searchCounter) {
+        // The query hasn't changed during the delay.
+        [self executeSearchForQuery:query searchID:searchID];
+      } else {
+        // The query changed during the delay.
+        [self decrementQueueCounter];
+      }
+    });
+  } else {
+    [self executeSearchForQuery:query searchID:searchID];
+  }
+}
+
+- (void) executeSearchForQuery:(NSString*)query searchID:(NSUInteger)searchID {
   __block BOOL searchResultsReturned = NO;
   [self setLoading:YES];
 
-  [self.delegate searchController:self performSearchForQuery:searchText withResultsHandler:^(NSArray* searchResults) {
+  [self.delegate searchController:self performSearchForQuery:query withResultsHandler:^(NSArray* searchResults) {
     NSAssert(!searchResultsReturned, @"JCAutocompletingSearchController: delegate called results handler more than once for the same search execution.");
     searchResultsReturned = YES;
-    
+
     if (searchID >= currentlyDisplaySearchID) {
       currentlyDisplaySearchID = searchID;
       if (searchResults) {
@@ -167,11 +195,15 @@
     } else {
       NSLog(@"JCAutocompletingSearchController: received out-of-order search results; ignoring. (currently displayed: %i, searchID: %i", currentlyDisplaySearchID, searchID);
     }
-    --loadingQueueCount;
-    if (loadingQueueCount == 0) {
-      [self setLoading:NO];
-    }
+    [self decrementQueueCounter];
   }];
+}
+
+- (void) decrementQueueCounter {
+  --loadingQueueCount;
+  if (loadingQueueCount == 0) {
+    [self setLoading:NO];
+  }
 }
 
 - (void) searchBarCancelButtonClicked:(UISearchBar*)searchBar {

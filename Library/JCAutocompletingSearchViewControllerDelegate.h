@@ -26,5 +26,6 @@ typedef void (^JCAutocompletingSearchResultsHandler)(NSArray*);
                    tableView:(UITableView*)tableView
      heightForRowAtIndexPath:(NSIndexPath*)indexPath;
 - (BOOL) searchController:(JCAutocompletingSearchViewController*)searchController shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
+- (dispatch_time_t) searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:(JCAutocompletingSearchViewController *)searchController;
 
 @end

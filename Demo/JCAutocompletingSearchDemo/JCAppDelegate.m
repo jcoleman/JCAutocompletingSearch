@@ -98,4 +98,9 @@
   return YES;
 }
 
+// Optional.
+- (dispatch_time_t) searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:(JCAutocompletingSearchViewController*)searchController {
+  return 0.2 * NSEC_PER_SEC;
+}
+
 @end
