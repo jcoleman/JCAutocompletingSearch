@@ -157,6 +157,10 @@
   [self executeSearchForQuery:searchText delayedBatching:(delaySearchUntilQueryUnchangedForTimeOffset != 0)];
 }
 
+- (void) searchBarSearchButtonClicked:(UISearchBar*)searchBar {
+  [self executeSearchForQuery:searchBar.text delayedBatching:NO];
+}
+
 - (void) executeSearchForQuery:(NSString*)query delayedBatching:(BOOL)delayedBatching {
   ++loadingQueueCount;
   ++searchCounter;
