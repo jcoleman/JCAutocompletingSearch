@@ -104,7 +104,7 @@ This project includes a `podspec` for usage with [CocoaPods](http://http://cocoa
 
 to your `Podfile` and run `pod install`.
 
-Alternately, you can add all of the files contained in this project's `Library` directory to your Xcode project. If your project does not use ARC, you will need to enable ARC on these files.
+Alternately, you can add all of the files contained in this project's `Library` directory to your Xcode project. If your project does not use ARC, you will need to enable ARC on these files. You can enabled ARC per-file by adding the -fobjc-arc flag, as described on [a common StackOverflow question](http://stackoverflow.com/questions/6646052/how-can-i-disable-arc-for-a-single-file-in-a-project).
 
 Licence
 -------
