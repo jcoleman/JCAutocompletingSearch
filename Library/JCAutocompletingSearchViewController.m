@@ -36,7 +36,6 @@
 
 - (void) viewDidLoad {
   [super viewDidLoad];
-	// Do any additional setup after loading the view.
 
   if ( self.delegate
        && [self.delegate respondsToSelector:@selector(searchControllerShouldPerformBlankSearchOnLoad:)]
@@ -50,8 +49,8 @@
 - (void) viewDidUnload {
   [self setResultsTableView:nil];
   [self setSearchBar:nil];
+
   [super viewDidUnload];
-  // Release any retained subviews of the main view.
 }
 
 - (BOOL) shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation {
