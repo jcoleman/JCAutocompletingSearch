@@ -41,6 +41,8 @@
        && [self.delegate respondsToSelector:@selector(searchControllerShouldPerformBlankSearchOnLoad:)]
        && [self.delegate searchControllerShouldPerformBlankSearchOnLoad:self]) {
     [self executeSearchForQuery:@"" delayedBatching:NO];
+  } else {
+    [self.searchBar becomeFirstResponder];
   }
 }
 
