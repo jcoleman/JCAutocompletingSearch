@@ -254,17 +254,18 @@
 
 - (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
   NSUInteger row = indexPath.row;
-  if (delegateManagesTableViewCells) {
-    return [self.delegate searchController:self tableView:self.resultsTableView cellForRowAtIndexPath:indexPath];
-  } else {
-    if (row < self.results.count) {
+  if (row < self.results.count) {
+    if (delegateManagesTableViewCells) {
+      return [self.delegate searchController:self tableView:self.resultsTableView cellForRowAtIndexPath:indexPath];
+    } else {
       NSDictionary* result = (NSDictionary*)[self.results objectAtIndex:row];
       JCAutocompletingSearchGenericResultCell* cell = (JCAutocompletingSearchGenericResultCell*)[self.resultsTableView dequeueReusableCellWithIdentifier:@"ResultCell"];
       cell.resultLabel.text = [result objectForKey:@"label"];
       return cell;
-    } else {
-      return Nil;
     }
+  } else {
+    NSLog(@"JCAutocompletingSearch: results table view attempted to load row %u but only %u result(s) exist.", row, self.results.count);
+    return Nil;
   }
 }
 
