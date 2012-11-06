@@ -16,6 +16,7 @@
   BOOL delegateManagesTableViewCells;
   BOOL searchesPerformedSynchronously;
   dispatch_time_t delaySearchUntilQueryUnchangedForTimeOffset;
+  BOOL networkActivityIndicatorWasVisibleWhenLoadingBegan;
 }
 
 + (JCAutocompletingSearchViewController*) autocompletingSearchViewController {
@@ -121,20 +122,14 @@
 - (void) setLoading:(BOOL)loading {
   @synchronized(loadingMutex) {
     if (!searchesPerformedSynchronously) {
-      NSArray* changedIndexPaths = @[[NSIndexPath indexPathForRow:0 inSection:0]];
-      BOOL wasPreviouslyLoading = _loading;
-      _loading = loading;
-      if (wasPreviouslyLoading && !loading) {
-        // Remove loading cell.
-        [self.resultsTableView beginUpdates];
-        [self.resultsTableView deleteRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.resultsTableView endUpdates];
-      } else if (!wasPreviouslyLoading && loading) {
-        // Add loading cell.
-        [self.resultsTableView beginUpdates];
-        [self.resultsTableView insertRowsAtIndexPaths:changedIndexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
-        [self.resultsTableView endUpdates];
+      UIApplication* application = [UIApplication sharedApplication];
+      if (!_loading && loading) {
+        networkActivityIndicatorWasVisibleWhenLoadingBegan = application.networkActivityIndicatorVisible;
+        application.networkActivityIndicatorVisible = YES;
+      } else if (_loading && !loading) {
+        application.networkActivityIndicatorVisible = networkActivityIndicatorWasVisibleWhenLoadingBegan;
       }
+      _loading = loading;
     } else {
       _loading = NO;
     }
@@ -252,7 +247,7 @@
 
 - (NSInteger) tableView:(UITableView*)tableView numberOfRowsInSection:(NSInteger)section {
   if (section == 0) {
-    return self.results.count + (self.loading ? 1 : 0);
+    return self.results.count;
   } else {
     return 0;
   }
@@ -260,14 +255,6 @@
 
 - (UITableViewCell*) tableView:(UITableView*)tableView cellForRowAtIndexPath:(NSIndexPath*)indexPath {
   NSUInteger row = indexPath.row;
-  if (self.loading) {
-    if (row == 0) {
-      return [self.resultsTableView dequeueReusableCellWithIdentifier:@"LoadingCell"];
-    } else {
-      --row;
-    }
-  }
-
   if (delegateManagesTableViewCells) {
     return [self.delegate searchController:self tableView:self.resultsTableView cellForRowAtIndexPath:indexPath];
   } else {
