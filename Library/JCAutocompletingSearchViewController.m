@@ -276,4 +276,11 @@
   }
 }
 
+
+#pragma mark - UIScrollViewDelegate Implementation
+
+- (void) scrollViewWillBeginDragging:(UIScrollView*)scrollView {
+  [self.searchBar resignFirstResponder];
+}
+
 @end
