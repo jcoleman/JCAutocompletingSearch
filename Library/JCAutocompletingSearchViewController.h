@@ -11,5 +11,6 @@
 
 - (void) resetSelection;
 - (void) setSearchBarTextAndPerformSearch:(NSString*)query;
+- (NSDictionary*) resultForRowAtIndex:(NSUInteger)resultIndex;
 
 @end

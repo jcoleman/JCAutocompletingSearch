@@ -151,6 +151,10 @@
   [self searchBar:self.searchBar textDidChange:query];
 }
 
+- (NSDictionary*) resultForRowAtIndex:(NSUInteger)resultIndex {
+  return [self.results objectAtIndex:resultIndex];
+}
+
 #pragma mark - UISearchBarDelegate Implementation
 
 - (void) searchBar:(UISearchBar*)searchBar textDidChange:(NSString*)searchText {
@@ -236,9 +240,9 @@
     }
   }
 
-[self.delegate searchController:self
-                      tableView:self.resultsTableView
-                 selectedResult:[self.results objectAtIndex:row]];
+  [self.delegate searchController:self
+                        tableView:self.resultsTableView
+                   selectedResult:[self resultForRowAtIndex:row]];
 }
 
 
