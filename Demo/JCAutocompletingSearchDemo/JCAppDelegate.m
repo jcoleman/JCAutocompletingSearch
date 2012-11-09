@@ -108,4 +108,9 @@
   return YES; // Defaults to YES.
 }
 
+// Optional.
+- (void) searchController:(JCAutocompletingSearchViewController*)searchController didChangeActivityInProgressToEnabled:(BOOL)activityInProgress {
+  NSLog(@"Activity indicator changed to: %@", (activityInProgress ? @"YES" : @"NO"));
+}
+
 @end

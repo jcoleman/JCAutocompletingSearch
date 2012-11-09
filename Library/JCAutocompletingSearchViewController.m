@@ -132,9 +132,15 @@
         if (shouldDisplayNetworkActivityIndicator) {
           application.networkActivityIndicatorVisible = YES;
         }
+        if ([self.delegate respondsToSelector:@selector(searchController:didChangeActivityInProgressToEnabled:)]) {
+          [self.delegate searchController:self didChangeActivityInProgressToEnabled:YES];
+        }
       } else if (_loading && !loading) {
         if (shouldDisplayNetworkActivityIndicator) {
           application.networkActivityIndicatorVisible = NO;
+        }
+        if ([self.delegate respondsToSelector:@selector(searchController:didChangeActivityInProgressToEnabled:)]) {
+          [self.delegate searchController:self didChangeActivityInProgressToEnabled:NO];
         }
       }
       _loading = loading;

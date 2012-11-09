@@ -28,5 +28,6 @@ typedef void (^JCAutocompletingSearchResultsHandler)(NSArray*);
 - (BOOL) searchController:(JCAutocompletingSearchViewController*)searchController shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation;
 - (dispatch_time_t) searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:(JCAutocompletingSearchViewController *)searchController;
 - (BOOL) searchControllerShouldDisplayNetworkActivityIndicator:(JCAutocompletingSearchViewController*)searchController;
+- (void) searchController:(JCAutocompletingSearchViewController*)searchController didChangeActivityInProgressToEnabled:(BOOL)activityInProgress;
 
 @end
