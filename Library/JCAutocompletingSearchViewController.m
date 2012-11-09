@@ -16,6 +16,7 @@
   BOOL delegateManagesTableViewCells;
   BOOL searchesPerformedSynchronously;
   dispatch_time_t delaySearchUntilQueryUnchangedForTimeOffset;
+  BOOL shouldDisplayNetworkActivityIndicator;
   BOOL networkActivityIndicatorWasVisibleWhenLoadingBegan;
 }
 
@@ -66,6 +67,7 @@
   delegateManagesTableViewCells = NO;
   searchesPerformedSynchronously = NO;
   delaySearchUntilQueryUnchangedForTimeOffset = 0;
+  shouldDisplayNetworkActivityIndicator = YES;
 
   if (delegate) {
     if ([delegate respondsToSelector:@selector(searchControllerUsesCustomResultTableViewCells:)]) {
@@ -76,6 +78,9 @@
     }
     if ([delegate respondsToSelector:@selector(searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:)]) {
       delaySearchUntilQueryUnchangedForTimeOffset = [delegate searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:self];
+    }
+    if ([delegate respondsToSelector:@selector(searchControllerShouldDisplayNetworkActivityIndicator:)]) {
+      shouldDisplayNetworkActivityIndicator = [delegate searchControllerShouldDisplayNetworkActivityIndicator:self];
     }
   }
 }
@@ -124,9 +129,13 @@
       UIApplication* application = [UIApplication sharedApplication];
       if (!_loading && loading) {
         networkActivityIndicatorWasVisibleWhenLoadingBegan = application.networkActivityIndicatorVisible;
-        application.networkActivityIndicatorVisible = YES;
+        if (shouldDisplayNetworkActivityIndicator) {
+          application.networkActivityIndicatorVisible = YES;
+        }
       } else if (_loading && !loading) {
-        application.networkActivityIndicatorVisible = networkActivityIndicatorWasVisibleWhenLoadingBegan;
+        if (shouldDisplayNetworkActivityIndicator) {
+          application.networkActivityIndicatorVisible = NO;
+        }
       }
       _loading = loading;
     } else {

@@ -103,4 +103,9 @@
   return 0.2 * NSEC_PER_SEC;
 }
 
+// Optional.
+- (BOOL) searchControllerShouldDisplayNetworkActivityIndicator:(JCAutocompletingSearchViewController*)searchController {
+  return YES; // Defaults to YES.
+}
+
 @end
