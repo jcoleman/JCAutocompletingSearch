@@ -63,6 +63,10 @@
 - (void) setDelegate:(NSObject<JCAutocompletingSearchViewControllerDelegate>*)delegate {
   _delegate = delegate;
 
+  delegateManagesTableViewCells = NO;
+  searchesPerformedSynchronously = NO;
+  delaySearchUntilQueryUnchangedForTimeOffset = 0;
+
   if (delegate) {
     if ([delegate respondsToSelector:@selector(searchControllerUsesCustomResultTableViewCells:)]) {
       delegateManagesTableViewCells = [delegate searchControllerUsesCustomResultTableViewCells:self];
@@ -73,10 +77,6 @@
     if ([delegate respondsToSelector:@selector(searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:)]) {
       delaySearchUntilQueryUnchangedForTimeOffset = [delegate searchControllerDelaySearchingUntilQueryUnchangedForTimeOffset:self];
     }
-  } else {
-    delegateManagesTableViewCells = NO;
-    searchesPerformedSynchronously = NO;
-    delaySearchUntilQueryUnchangedForTimeOffset = 0;
   }
 }
 
