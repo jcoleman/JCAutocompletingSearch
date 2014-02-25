@@ -37,6 +37,14 @@
 
 - (void) viewDidLoad {
   [super viewDidLoad];
+  
+  if (floor(NSFoundationVersionNumber) <= NSFoundationVersionNumber_iOS_6_1) {
+    // does nothing
+  } else {
+    // iOS 7 +
+    self.searchBar.frame = CGRectMake(0, 0, self.view.frame.size.width, 64);
+    self.resultsTableView.frame = CGRectMake(0, CGRectGetMaxY(self.searchBar.frame), self.view.frame.size.width, self.view.frame.size.height-self.searchBar.frame.size.width);
+  }
 
   if ( self.delegate
        && [self.delegate respondsToSelector:@selector(searchControllerShouldPerformBlankSearchOnLoad:)]
@@ -242,14 +250,6 @@
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
   NSUInteger row = indexPath.row;
-  if (self.loading) {
-    if (row == 0) {
-      [tableView deselectRowAtIndexPath:indexPath animated:NO];
-      return;
-    } else {
-      --row;
-    }
-  }
 
   [self.delegate searchController:self
                         tableView:self.resultsTableView
