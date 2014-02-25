@@ -250,14 +250,6 @@
 
 - (void) tableView:(UITableView*)tableView didSelectRowAtIndexPath:(NSIndexPath*)indexPath {
   NSUInteger row = indexPath.row;
-  if (self.loading) {
-    if (row == 0) {
-      [tableView deselectRowAtIndexPath:indexPath animated:NO];
-      return;
-    } else {
-      --row;
-    }
-  }
 
   [self.delegate searchController:self
                         tableView:self.resultsTableView
